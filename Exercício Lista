@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+class Main {
+  private int[] valores;
+  private int tamanho;
+
+  public Main(int tam){
+    if(tam > 0){
+      this.tamanho = tam;
+      this.valores = new int[tamanho];
+    }
+  }
+  
+  public int Insere(int valor, int pos){
+    if (pos >= 0 && pos < valores.length){
+      valores[pos] = valor;
+      return valor;
+    }else return -1;
+  }
+
+  public int Inserir(int valor){
+    for(int i=0;i<=(valores.length-1);i++){
+      if (valores[i] == 0){
+        valores[i] = valor;
+        return valor;
+      }
+    }  
+    return -1;
+  }
+
+  public int Remove(int pos) {
+    int valor;
+    if (pos > 0 && pos < valores.length) {
+      valor = valores[pos];
+      valores[pos] = 0;
+      return valor;
+    }else return -1;
+  }
+
+  public void Remover(){
+    Scanner leia = new Scanner(System.in);
+    System.out.println("\nDigite um número para remover: ");
+    int valor = leia.nextInt();
+    for(int i=0;i<=(valores.length-1);i++){
+      if (valores[i] == valor){
+        valores[i] = 0;
+      }
+    }
+  }
+
+  public void Busca(int valor){
+    for(int i=0;i<valores.length;i++){
+      if(valores[i] == valor){
+        System.out.println("O valor está no indice: " + i);
+      }
+    }
+  }
+
+  public void Mostra(){
+    for(int i=0;i<=(this.valores.length-1);i++){
+      System.out.print(this.valores[i]+" ");
+    }
+  }
+
+  public static void main(String[] args) {
+    Main m = new Main(5);
+    m.Inserir(8);
+    m.Inserir(9);
+    m.Inserir(15);
+    m.Inserir(5);
+    m.Inserir(3);
+    m.Mostra();
+    m.Remover();
+    System.out.print("\n");
+    m.Mostra();
+  }
+
+}
